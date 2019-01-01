@@ -64,3 +64,8 @@ $ curl -s localhost:1729/stats?pretty
   "failCount": 8
 }
 ```  
+
+### Possible improvements
+- I usually add tests, and think every meaningful project should have tests. Future changes may break functionality unintentionaly, and good tests can save a lot of debugging time in the future.
+- In this toy example, there isn't much that can go wrong. But in general, I prefer to avoid mutable shared state. the `@volatile private[this] var stats` is an example of what I prefer to avoid in larger systems. A more complex but reliable solution, would be to use a publisher that listeners can hook up into, and get latest updates properly.
+- I only exposed a single API, and a more extensive solution can have multiple views. We can also think of a usefull API to expose the stream of events as a chunked response, and not just the accumulated value. We can also extend this to fetch events from multiple sources, and aggregate the stats.
