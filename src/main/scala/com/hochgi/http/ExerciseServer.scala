@@ -7,8 +7,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.stream.scaladsl.{Framing, Keep, Sink}
 import akka.stream.{ActorMaterializer, KillSwitches, Materializer}
 import com.hochgi.conf.ExerciseConf
-import com.hochgi.json.EventJsonParser
-import com.hochgi.json.EventJsonParser.Stats
+import com.hochgi.json._
 import com.hochgi.stream.ExerciseGenerator
 import com.hochgi.util._
 

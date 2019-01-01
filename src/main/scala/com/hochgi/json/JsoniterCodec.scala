@@ -1,7 +1,5 @@
 package com.hochgi.json
 
-import com.hochgi.json.EventJsonParser.{Event, Stats}
-
 // import is nested & FQCNs because of:
 // https://github.com/plokhotnyuk/jsoniter-scala#known-issues
 object JsoniterCodec {
