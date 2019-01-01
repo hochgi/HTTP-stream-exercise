@@ -10,11 +10,11 @@ lazy val root = (project in file(".")).
     name := "HTTP stream exercise",
     libraryDependencies ++= Seq(
       scalaTest % Test,
-      jsoniterCore % Compile,
-      jsoniterMacros % Provided,
       scalaLogging,
       akkaStream,
       akkaHttp,
-      scallop),
+      scallop,
+      uPickle,
+      uJson),
     mappings in Universal += file("resources/generator-linux-amd64") -> "resources/generator-linux-amd64"
   ).enablePlugins(JavaAppPackaging)

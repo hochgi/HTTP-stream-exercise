@@ -1,15 +1,19 @@
 package com.hochgi.json
 
 import akka.util.ByteString
-import com.github.plokhotnyuk.jsoniter_scala.core.{WriterConfig, readFromByteBuffer, writeToArray}
-import com.hochgi.json.JsoniterCodec.{eventCodec,statsCodec}
+//import com.github.plokhotnyuk.jsoniter_scala.core.{WriterConfig, readFromByteBuffer, writeToArray}
+//import com.hochgi.json.JsoniterCodec.{eventCodec,statsCodec}
 import com.hochgi.util.incrementByKey
+import upickle.default._
 
 import scala.util.Try
 
 object EventJsonParser {
 
-  final case class Event(eventType: String, data: String, timestamp: Long)
+  object           Event { implicit val rw: ReadWriter[Event] = macroRW }
+  final case class Event(@upickle.implicits.key("event_type") eventType: String, data: String, timestamp: Long)
+
+  object           Stats { implicit val rw: ReadWriter[Stats] = macroRW }
   final case class Stats(eventTypesCount: Map[String,Long], wordsCount: Map[String,Long], failCount: Long) {
 
     def update(event: Try[Event]): Stats = event.fold(_ => this.copy(failCount = failCount + 1), {
@@ -23,9 +27,9 @@ object EventJsonParser {
     })
   }
 
-  def parse(line: ByteString): Try[Event] = Try(readFromByteBuffer[Event](line.toByteBuffer))
+  def parse(line: ByteString): Try[Event] = Try(read[Event](line.utf8String))
 
-  def format(stats: Stats, pretty: Boolean): Array[Byte] =
-    if (pretty) writeToArray(stats, WriterConfig(indentionStep = 2))
-    else writeToArray(stats)
+  def format(stats: Stats, pretty: Boolean): String =
+    if (pretty) writeJs(stats).render(indent = 2)
+    else write(stats)
 }

@@ -8,8 +8,13 @@ object Dependencies {
   lazy val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
   lazy val scallop      = "org.rogach"                 %% "scallop"       % "3.1.5"
   
-  val jsoniterVersion = "0.37.6"
+  val uPickleVersion =  "0.7.1"
   
-  lazy val jsoniterCore   = "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-core"   % jsoniterVersion 
-  lazy val jsoniterMacros = "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-macros" % jsoniterVersion 
+  lazy val uPickle      = "com.lihaoyi"                %% "upickle"       % uPickleVersion
+  lazy val uJson        = "com.lihaoyi"                %% "ujson"         % uPickleVersion
+  
+//  val jsoniterVersion = "0.37.6"
+//  
+//  lazy val jsoniterCore   = "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-core"   % jsoniterVersion 
+//  lazy val jsoniterMacros = "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-macros" % jsoniterVersion 
 }

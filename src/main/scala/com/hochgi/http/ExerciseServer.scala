@@ -61,7 +61,7 @@ object ExerciseServer extends App {
 
   // shameless C&P from akka-http docs:
   //   https://doc.akka.io/docs/akka-http/current/routing-dsl/index.html#minimal-example
-  println(s"Server online at http://localhost:${conf.port()}/\nPress RETURN to stop...")
+  println(s"Server online at http://localhost:${conf.port()}\nPress RETURN to stop...")
   scala.io.StdIn.readLine() // let it run until user presses return
   ks.shutdown()
   bindingFuture

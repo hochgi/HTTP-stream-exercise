@@ -1,24 +1,24 @@
-package com.hochgi.json
-
-import com.hochgi.json.EventJsonParser.{Event, Stats}
-
+//package com.hochgi.json
+//
+//import com.hochgi.json.EventJsonParser.{Event, Stats}
+//
 // import is nested & FQCNs because of:
 // https://github.com/plokhotnyuk/jsoniter-scala#known-issues
-object JsoniterCodec {
-
-  import com.github.plokhotnyuk.jsoniter_scala.core.JsonValueCodec
-
-  implicit val eventCodec: JsonValueCodec[Event] = {
-    com.github.plokhotnyuk.jsoniter_scala.macros.JsonCodecMaker.make[Event](
-      com.github.plokhotnyuk.jsoniter_scala.macros.CodecMakerConfig(fieldNameMapper = {
-      case "eventType" => "event_type"
-      case anythingElse => anythingElse
-    }))
-  }
-
-  implicit val statsCodec: JsonValueCodec[Stats] = {
-    com.github.plokhotnyuk.jsoniter_scala.macros.JsonCodecMaker.make[Stats](
-      com.github.plokhotnyuk.jsoniter_scala.macros.CodecMakerConfig()
-    )
-  }
-}
+//object JsoniterCodec {
+//
+//  import com.github.plokhotnyuk.jsoniter_scala.core.JsonValueCodec
+//
+//  implicit val eventCodec: JsonValueCodec[Event] = {
+//    com.github.plokhotnyuk.jsoniter_scala.macros.JsonCodecMaker.make[Event](
+//      com.github.plokhotnyuk.jsoniter_scala.macros.CodecMakerConfig(fieldNameMapper = {
+//      case "eventType" => "event_type"
+//      case anythingElse => anythingElse
+//    }))
+//  }
+//
+//  implicit val statsCodec: JsonValueCodec[Stats] = {
+//    com.github.plokhotnyuk.jsoniter_scala.macros.JsonCodecMaker.make[Stats](
+//      com.github.plokhotnyuk.jsoniter_scala.macros.CodecMakerConfig()
+//    )
+//  }
+//}
